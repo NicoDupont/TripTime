@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Home -> Work",
+    "origin": "Home Adress",
+    "destination": "Work Adress",
+    "entity_id": "triptime_home_work"
+  },
+  {
+    "name": "Work -> Home",
+    "origin": "Work Adress",
+    "destination": "Home Adress",
+    "entity_id": "triptime_work_home"
+  }
+]
