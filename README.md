@@ -21,6 +21,21 @@ Il est basé sur l'API de Google Maps et permet de récupérer les temps de traj
  4. L'intégration des entités se fait automatiquement dans home assistant.
  5. Ajout d'automations dans home assistant. 
  6. Ajout d'un petit flux node red pour gérer l'affichage des temps de trajets sur ma matrice led le matin avant de partir.
+ 
+### Cron
+
+```bash
+crontab -e
+```
+
+J'ai besoin de nouvelle données vers 7/8h le matin et vers 17h40 le soir.  
+
+```bash
+# du lundi au vendredi 7h40, 8h10, 17h40
+40 7 * * 1-5 python3 /home/nicolas/python/TripTime/main.py
+10 8 * * 1-5 python3 /home/nicolas/python/TripTime/main.py
+40 17 * * 1-5 python3 /home/nicolas/python/TripTime/main.py
+```
 
 ### Automations
 
