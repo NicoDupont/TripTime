@@ -5,13 +5,14 @@ Il est basé sur l'API de Google Maps et permet de récupérer les temps de traj
 
 ### Révisions
 
+ - 26/02/2025 - V1 - ok
  - 10/02/2025 - V0.1 - Création du projet
 
 ### Pré-requis
 
-1. Une cle api pour google maps
+1. Une cle api pour google maps (compte gmail requis + cb)
 2. Une instance home assistante ouverte sur internet
-3. Un pc/serveur pour executer le code python
+3. Un pc/serveur/vps/nas, n'importe quoi pouvant executer python3 et connecté à internet pour executer le script.
 
 ### Installation
 
@@ -19,6 +20,8 @@ Il est basé sur l'API de Google Maps et permet de récupérer les temps de traj
  2. Renommer le fichier config.sample.yaml en config.yaml et ajouter votre clé API Google Maps, votre url Home Assistant ainsi que le Bearer d'authentification pour la rest api de home assistant.
  3. Créer une ou plusieurs taches cron pour lancer le script main.py. (attention à la facturation google)
  4. L'intégration des entités se fait automatiquement dans home assistant.
+
+Supplément  
  5. Ajout d'automations dans home assistant. 
  6. Ajout d'un petit flux node red pour gérer l'affichage des temps de trajets sur ma matrice led le matin avant de partir.
  
@@ -26,15 +29,17 @@ Il est basé sur l'API de Google Maps et permet de récupérer les temps de traj
 
 ```bash
 crontab -e
+chmod +x /home/nicolas/python/TripTime/main.py
 ```
 
-J'ai besoin de nouvelle données vers 7/8h le matin et vers 17h40 le soir.  
+J'ai besoin de nouvelles données entre 7/8h le matin et vers 17h40 le soir.  
 
 ```bash
-# du lundi au vendredi 7h40, 8h10, 17h40
-40 7 * * 1-5 python3 /home/nicolas/python/TripTime/main.py
-10 8 * * 1-5 python3 /home/nicolas/python/TripTime/main.py
-40 17 * * 1-5 python3 /home/nicolas/python/TripTime/main.py
+# du lundi au vendredi 7h00, 7h40, 17h40 et le lundi, mardi, jeudi vendredi à 8h10
+0 7 * * 1-5 /usr/bin/python3 /home/nicolas/python/TripTime/main.py
+40 7 * * 1-5 /usr/bin/python3 /home/nicolas/python/TripTime/main.py
+10 8 * * 1,2,4,5 /usr/bin/python3 /home/nicolas/python/TripTime/main.py
+45 17 * * 1-5 /usr/bin/python3 /home/nicolas/python/TripTime/main.py
 ```
 
 ### Automations

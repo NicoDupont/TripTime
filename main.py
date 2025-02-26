@@ -80,6 +80,6 @@ async def main():
     async with aiohttp.ClientSession() as session:
         await travel_times(gmaps, session, config, routes)
 
-# lancer la tache principale
+# lancer la fonction principale
 if __name__ == "__main__":
     asyncio.run(main())
