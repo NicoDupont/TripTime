@@ -29,19 +29,19 @@ Supplément
 
 ```bash
 crontab -e
-chmod +x launcher_arrosage.sh
+chmod +x launcher_triptime.sh
 sudo apt install dos2unix
-dos2unix launcher_arrosage.sh
+dos2unix launcher_triptime.sh
 ```
 
 J'ai besoin de nouvelles données entre 7/8h le matin et vers 17h40 le soir.  
 
 ```bash
 # du lundi au vendredi 7h00, 7h40, 17h45 et le lundi, mardi, jeudi vendredi à 8h10
-0 7 * * 1-5 sh /home/nicolas/launcher_arrosage.sh
-40 7 * * 1-5 sh /home/nicolas/launcher_arrosage.sh
-10 8 * * 1,2,4,5 sh /home/nicolas/launcher_arrosage.sh
-45 17 * * 1-5 sh /home/nicolas/launcher_arrosage.sh
+0 7 * * 1-5 sh /home/nicolas/launcher_triptime.sh
+40 7 * * 1-5 sh /home/nicolas/launcher_triptime.sh
+10 8 * * 1,2,4,5 sh /home/nicolas/launcher_triptime.sh
+45 17 * * 1-5 sh /home/nicolas/launcher_triptime.sh
 ```
 
 ### Automations
